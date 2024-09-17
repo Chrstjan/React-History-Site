@@ -1,0 +1,13 @@
+@use "../../styles/variables" as *;
+
+.wrapperStyling {
+    display: block;
+    
+    &.darkMode {
+        background: $dark-color;
+    }
+
+    &.lightMode {
+        background: $white-color;
+    }
+}

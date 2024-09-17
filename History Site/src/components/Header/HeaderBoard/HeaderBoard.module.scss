@@ -1,0 +1,47 @@
+@use "../../../styles/mixins" as m;
+@use "../../../styles/variables" as *;
+@use "../../../styles/placeholders";
+
+.boardStyling {
+    display: block;
+    position: relative;
+    width: 80vw;
+    height: 200px;
+    background: $dark-color;
+    border: 12px solid $dark-brown;
+    top: 24%;
+    left: 50%;
+    transform: translate(-50%);
+
+    header {
+
+        .selectStyling {
+            @include m.flexBox(row, center, center, 0.5rem);
+            
+            button {
+                color: $gray-brown;
+                background: transparent;
+                border: 0;
+                @extend %headerfont;
+                font-size: 30px;
+                text-decoration: underline;
+                color: $light-brown;
+            }
+        }
+        h2 {
+            color: $gray-brown;
+            @extend %headerfont;
+            font-size: 35px;
+            text-align: center;
+        }
+
+        p {
+            color: $gray-brown;
+            @extend %breadtextfont;
+            text-align: center;
+            width: 270px;
+            padding-left: 0.5rem;
+        }
+    }
+
+}
