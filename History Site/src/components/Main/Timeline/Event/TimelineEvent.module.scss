@@ -21,5 +21,21 @@
         width: 150px;
         @extend %breadtextfont;
     }
+
+    footer {
+        @include m.flexBox(row, center, center, 0.5rem);
+        text-align: right;
+
+        img {
+            width: 90%;
+        }
+
+        a {
+            @extend %headerfont;
+            color: $white-color;
+            font-weight: 300;
+            font-size: 15px;
+        }
+    }
    }
 }

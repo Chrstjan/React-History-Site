@@ -1,6 +1,6 @@
 import style from "./Timeline.module.scss";
 
-export const Timeline = ({children}) => {
+export const Timeline = ({children, points}) => {
     return (
         <>
             <article className={style.timelineStyling}>
@@ -8,16 +8,16 @@ export const Timeline = ({children}) => {
                     <span className={style.circleStyling}></span>
                     <span className={style.lineStyling}></span>
                     <div className={style.timepointStyling}>
-                        <div className={style.pointContainer}>
-                            <span className={style.pointLineStyling}></span>
-                            <span className={style.pointStyling}></span>
-                            
-                        </div>
-                        <div className={style.pointContainer}>
-                            <span className={style.pointLineStyling}></span>
-                            <span className={style.pointStyling}></span>
-                            
-                        </div>
+                        {points.map((point) => {
+                            return (
+                                <>
+                                  <div className={style.pointContainer}>
+                                    <span className={style.pointLineStyling}></span>
+                                    <span className={style.pointStyling}></span>
+                                  </div>
+                                </>
+                            )
+                        })};
                     </div>
                 </div>
                 {children}

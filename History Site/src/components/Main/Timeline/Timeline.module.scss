@@ -3,10 +3,12 @@
 
 .timelineStyling {
     @include m.flexBox(row-reverse, flex-start, flex-start);
+    height: 100%;
 
     .lineContainer {
-        @include m.flexBox(column, center, flex-end, 0rem);
+        @include m.flexBox(column, center, flex-end, 1rem);
         position: relative;
+        border: 7px solid rgb(167, 197, 50);
 
         .circleStyling {
             display: block;
@@ -19,9 +21,8 @@
         }
 
         .lineStyling {
-            display: block;
             border-left: 6px solid $light-brown;
-            height: 100vh;
+            height: 100vh; //Temp solution: 1200px
             width: 20px;
             margin-right: 3.65rem;
         }

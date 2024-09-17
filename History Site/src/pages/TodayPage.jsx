@@ -23,9 +23,11 @@ export const TodayPage = () => {
             <Navigation />
             <DateWrapper>
                 <Icon icon="./src/assets/images/Light.svg" type="lightbulb"/>
-                <Timeline>
-                    {data ? <TimelineEvent data={data.data.Events}/>: <p>Loading...</p>}
-                </Timeline>
+                {data ? 
+                 <Timeline points={data.data.Events}>
+                    <TimelineEvent data={data.data.Events}/>
+                 </Timeline> 
+                 : <h2>Loading...</h2>}
             </DateWrapper>
         </>
     )
