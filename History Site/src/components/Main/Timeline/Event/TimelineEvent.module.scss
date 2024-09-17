@@ -1,0 +1,28 @@
+@use "../../../../styles/mixins" as m;
+@use "../../../../styles/variables" as *;
+
+.eventStyling {
+    @include m.flexBox(column, center, flex-end, 10rem);
+    margin-bottom: 112rem;
+    margin-right: 3.7rem;
+    
+    .lineContainer {
+        @include m.flexBox(row, center, center, 0rem);
+
+        .lineStyling {
+            display: block;
+            border-top: 6px solid $light-brown;
+            height: 20px;
+            width: 100px;
+        }
+
+        .pointStyling {
+            display: block;
+            width: 31px;
+            height: 31px;
+            border-radius: 50%;
+            background: $dark-color;
+            border: 5px solid $light-brown;
+        }
+    }
+}

@@ -1,0 +1,56 @@
+@use "../../../styles/mixins" as m;
+@use "../../../styles/variables" as *;
+
+.timelineStyling {
+
+    .lineContainer {
+        @include m.flexBox(column, center, flex-end, 0rem);
+        position: relative;
+
+        .circleStyling {
+            display: block;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            background: $light-brown;
+            margin-right: 3.2rem;
+            margin-bottom: -1rem;
+        }
+
+        .lineStyling {
+            display: block;
+            border-left: 6px solid $light-brown;
+            height: 100vh;
+            width: 20px;
+            margin-right: 3.65rem;
+        }
+
+        .timepointStyling {
+            @include m.flexBox(column, center, center, 6rem);
+            position: absolute;
+            top: 30%;
+            right: 16%;
+        }
+
+        .pointContainer {
+            @include m.flexBox(row, center, center, 0rem);
+
+            .pointLineStyling {
+                display: block;
+                border-top: 6px solid $light-brown;
+                height: 20px;
+                width: 100px;
+            }
+
+            .pointStyling {
+                display: block;
+                width: 31px;
+                height: 31px;
+                border-radius: 50%;
+                background: $dark-color;
+                border: 5px solid $light-brown;
+            }
+        }
+    }
+    
+}

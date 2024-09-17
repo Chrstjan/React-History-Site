@@ -4,8 +4,13 @@
     @include m.flexBox(row, center, center 0.3rem);
 
     img {
-        width: 10%;
+        width: 6%;
         filter: invert(100%);
+    }
+
+    &.lightbulb {
+        margin-left: -68%;
+        padding-bottom: 1rem;
     }
 
     &.small {
