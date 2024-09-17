@@ -1,24 +1,23 @@
 import style from "./TimelineEvent.module.scss";
 
-export const TimelineEvent = () => {
+export const TimelineEvent = ({data}) => {
     return (
             <div className={style.eventStyling}>
-                {/* <div className={style.lineContainer}>
-                    <span className={style.lineStyling}></span>
-                    <span className={style.pointStyling}></span>
-                </div>
-                <div className={style.lineContainer}>
-                    <span className={style.lineStyling}></span>
-                    <span className={style.pointStyling}></span>
-                </div>
-                <div className={style.lineContainer}>
-                    <span className={style.lineStyling}></span>
-                    <span className={style.pointStyling}></span>
-                </div>
-                <div className={style.lineContainer}>
-                    <span className={style.lineStyling}></span>
-                    <span className={style.pointStyling}></span>
-                </div> */}
+               {data.map((item) => {
+                return (
+                    <div>
+                     <header>
+                      <h4>{item.year}</h4>
+                     </header>
+                     <p>
+                        {item.text}
+                     </p>
+                     <footer>
+                        <a href="#">Read More</a>
+                     </footer>
+                    </div>
+                )
+               })}
             </div>
     )
 }

@@ -12,8 +12,8 @@ export const TodayPage = () => {
     const { data } = useFetch("https://history.muffinlabs.com/date");
 
     useEffect(() => {
-        {data ? console.log(data): null}
-    }, [])
+        {data ? console.log(data.data.Events): null}
+    }, [data])
 
     return (
         <>
@@ -24,7 +24,7 @@ export const TodayPage = () => {
             <DateWrapper>
                 <Icon icon="./src/assets/images/Light.svg" type="lightbulb"/>
                 <Timeline>
-                    <TimelineEvent />
+                    {data ? <TimelineEvent data={data.data.Events}/>: <p>Loading...</p>}
                 </Timeline>
             </DateWrapper>
         </>
