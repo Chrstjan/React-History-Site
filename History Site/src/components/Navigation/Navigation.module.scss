@@ -1,0 +1,18 @@
+@use "../../styles/mixins" as m;
+@use "../../styles/placeholders";
+
+.NavigationStyling {
+    @include m.flexBox(column-reverse, center, center);
+    padding: 0;
+
+    li {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+        font-size: 22px;
+        @extend %breadtextfont;
+        text-transform: uppercase;
+    }
+}

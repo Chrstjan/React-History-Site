@@ -5,6 +5,7 @@ import { Main } from "../components/Main/Main"
 import { Wrapper } from "../components/Wrapper/Wrapper"
 import { Header } from "../components/Header/Header";
 import { HeaderBoard } from "../components/Header/HeaderBoard/HeaderBoard";
+import { Navigation } from "../components/Navigation/Navigation";
 
 export const MainLayout = () => {
     const {isDarkMode } = useContext(ThemeContext)

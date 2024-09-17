@@ -1,5 +1,8 @@
 import { Header } from "../components/Header/Header"
 import { HeaderBoard } from "../components/Header/HeaderBoard/HeaderBoard"
+import { Navigation } from "../components/Navigation/Navigation"
+import { DateWrapper } from "../components/Main/DateWrapper/DateWrapper"
+import { Icon } from "../components/Main/Icon/Icon"
 
 export const TodayPage = () => {
     return (
@@ -7,7 +10,10 @@ export const TodayPage = () => {
             <Header>
                 <HeaderBoard headerText="On This Day" subText="What happened on this day - historical events, deaths and births thoughout time"/>
             </Header>
-            <h2>Today</h2>
+            <Navigation />
+            <DateWrapper>
+                <Icon icon="./src/assets/images/Light.svg"/>
+            </DateWrapper>
         </>
     )
 }

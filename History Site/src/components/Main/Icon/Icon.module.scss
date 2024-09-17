@@ -1,0 +1,16 @@
+@use "../../../styles/mixins" as m;
+
+.iconStyling {
+    @include m.flexBox(row, center, center 0.3rem);
+
+    img {
+        width: 10%;
+        filter: invert(100%);
+    }
+
+    &.small {
+        img {
+            width: 5%;
+        }
+    }
+}
