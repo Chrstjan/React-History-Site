@@ -1,6 +1,25 @@
 @use "../../../../styles/mixins" as m;
 @use "../../../../styles/variables" as *;
+@use "../../../../styles/placeholders";
 
 .eventStyling {
-   
+    @include m.flexBox(column, center, center, 4rem);
+   margin-top: 10.5rem;
+
+   .event {
+    color: $white-color;
+    margin-right: 2.8rem;
+
+    header {
+        h4 {
+            @extend %headerfont;
+            text-align: right;
+            margin-left: 6rem;
+        }
+    }
+    p {
+        width: 150px;
+        @extend %breadtextfont;
+    }
+   }
 }

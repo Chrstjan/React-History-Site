@@ -3,21 +3,28 @@ import style from "./TimelineEvent.module.scss";
 export const TimelineEvent = ({data}) => {
     return (
             <div className={style.eventStyling}>
-               {data.map((item) => {
-                return (
-                    <div>
+              <div className={style.event}>
                      <header>
-                      <h4>{item.year}</h4>
+                      <h4>Year: {data[0].year}</h4>
                      </header>
                      <p>
-                        {item.text}
+                        {data[0].text}
                      </p>
                      <footer>
                         <a href="#">Read More</a>
                      </footer>
-                    </div>
-                )
-               })}
+                </div>
+              <div className={style.event}>
+                     <header>
+                      <h4>Year: {data[1].year}</h4>
+                     </header>
+                     <p>
+                        {data[1].text}
+                     </p>
+                     <footer>
+                        <a href="#">Read More</a>
+                     </footer>
+                </div>
             </div>
     )
 }
