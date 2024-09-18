@@ -9,10 +9,15 @@ import { Timeline } from "../components/Main/Timeline/Timeline"
 import { TimelineEvent } from "../components/Main/Timeline/Event/TimelineEvent"
 
 export const TodayPage = () => {
-    const { data } = useFetch("https://history.muffinlabs.com/date");
+    let today = new Date();
+    let month = String(today.getMonth() + 1).padStart(2,'0');
+    let day = String(today.getDate()).padStart(2,'0');
+    const { data } = useFetch(`https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/${month}/${day}`); 
+                               //https://history.muffinlabs.com/date
 
     useEffect(() => {
-        {data ? console.log(data.data.Events): null}
+        //data.data.Events
+        {data ? console.log(data): null}
     }, [data])
     
     return (
@@ -24,8 +29,8 @@ export const TodayPage = () => {
             <DateWrapper>
                 <Icon icon="./src/assets/images/Light.svg" type="lightbulb"/>
                 {data ? 
-                 <Timeline points={data.data.Events}>
-                    <TimelineEvent data={data.data.Events}/>
+                 <Timeline points={data.events}>
+                    <TimelineEvent data={data.events}/>
                  </Timeline> 
                  : <h2>Loading...</h2>}
             </DateWrapper>

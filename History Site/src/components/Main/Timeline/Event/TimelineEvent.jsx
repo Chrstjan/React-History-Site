@@ -14,7 +14,7 @@ export const TimelineEvent = ({data}) => {
                                 <p>{item.text}</p>
                                 <footer>
                                     <Icon icon="./src/assets/images/Bookmark.svg"/>
-                                    <a href={item.links[0].link} target="_blank">Read More</a>
+                                    <a href={item.pages[0].content_urls.mobile.page} target="_blank">Read More</a>
                                 </footer>
                             </div>
                         </>

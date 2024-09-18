@@ -7,6 +7,7 @@ import { Navigation } from "../components/Navigation/Navigation"
 import { Timeline } from "../components/Main/Timeline/Timeline"
 import { TimelineEvent } from "../components/Main/Timeline/Event/TimelineEvent"
 import { Modal } from "../components/Modal/Modal"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
 
 export const ByDatePage = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -16,16 +17,30 @@ export const ByDatePage = () => {
         setModalOpen(prev => !prev);
     }
 
-    useEffect(() => {
-        const getByDateDate = async () => {
-            const res = await fetch(`https://history.muffinlabs.com/date/${selectedDate}`)
-            const data = await res.json();
-            setSelectedDate(data);
-        }
+    const queryClient = useQueryClient();
 
-        getByDateDate();
-        console.log(selectedDate);
-    }, [selectedDate])
+    const { isPending, error, data } = useQuery({
+        queryKey: ["history by date"],
+        queryFn: async () => {
+            const res = await fetch(`https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/02/14`);
+            const data = await res.json();
+            return data;
+        },
+    });
+    console.log(data);
+    
+    // useEffect(() => {
+    //     const [month, day] = selectedDate.split("/");
+    //     const getByDateDate = async () => {
+    //         const res = await fetch(`https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/${month}/${day}`)
+    //                                 //https://history.muffinlabs.com/date/${selectedDate}
+    //         const data = await res.json();
+    //         setSelectedDate([data]);
+    //     }
+
+    //     getByDateDate();
+    //     console.log(selectedDate);
+    // }, [selectedDate])
 
     return (
         <>
