@@ -1,0 +1,25 @@
+@use "../../../styles/mixins" as m;
+@use "../../../styles/variables" as *;
+@use "../../../styles/placeholders";
+
+.aboutStyling {
+    @include m.flexBox(column, center, center);
+    color: $white-color;
+    padding: 0rem 1.8rem;
+    text-align: center;
+
+    header {
+        h3 {
+            @extend %headerfont;
+            color: $light-brown;
+        }
+    }
+
+    p {
+        @extend %breadtextfont;
+    }
+
+    &.lightMode {
+        color: $dark-color;
+    }
+}
