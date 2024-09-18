@@ -1,0 +1,11 @@
+@use "../../styles/variables" as *;
+
+.buttonStyling {
+    background: $white-color;
+    color: $dark-color;
+
+    &.lightMode {
+        background: $dark-color;
+        color: $white-color;
+    }
+}

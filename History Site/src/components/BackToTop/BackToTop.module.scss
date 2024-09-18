@@ -1,3 +1,5 @@
+@use "../../styles/variables" as *;
+
 .topStyling {
     position: fixed;
     bottom: 10%;
@@ -8,4 +10,11 @@
     height: 60px;
     border-radius: 50%; 
     text-align: center;
+    background: $white-color;
+    color: $dark-color;
+
+    &.lightMode {
+        background: $dark-color;
+        color: $white-color;
+    }
 }

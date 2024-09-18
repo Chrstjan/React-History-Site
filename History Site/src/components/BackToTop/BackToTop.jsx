@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import style from "./BackToTop.module.scss";
 
-export const BackToTop = () => {
+export const BackToTop = ({isDarkMode}) => {
     const myRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
 
@@ -20,7 +20,6 @@ export const BackToTop = () => {
         const totalScrollable = documentHeight - windowHeight;
 
         const scrollProgress = (scrollY / totalScrollable) * 100;
-        console.log(scrollProgress);
 
         if (scrollProgress > 30) {
             setIsVisible(true);
@@ -39,7 +38,7 @@ export const BackToTop = () => {
     }, []);
     return (
         <>
-        {isVisible ? <button className={style.topStyling} onClick={() => scrollTopTop()} ref={myRef}>Back to top</button> : null}
+        {isVisible ? <button className={`${style.topStyling} ${isDarkMode ? null : style.lightMode}`} onClick={() => scrollTopTop()} ref={myRef}>Back to top</button> : null}
         </>
     )
 }
