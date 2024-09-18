@@ -1,21 +1,25 @@
 import { useState } from "react";
 import style from "./Modal.module.scss";
 
-export const Modal = ({modalOpen, typedDate, headerText, dateText}) => {
-
-    const [selectedDate, setSelectedDate] = useState("");
+export const Modal = ({modalOpen, month, day, headerText, dateText}) => {
+    const [selectedMonth, setSelecteMonth] = useState("");
+    const [selectedDay, setSelecteDay] = useState("");
 
     const handleModal = () => {
         modalOpen(prev => !prev);
     }
 
-    const handleDateTyped = (e) => {
-        setSelectedDate(e.target.value);
+    const handleMonth = (e) => {
+        setSelecteMonth(e.target.value);
+    }
+
+    const handleDay = (e) => {
+        setSelecteDay(e.target.value);
     }
 
     const handleSendDate = () => {
-        typedDate(selectedDate);
-        handleModal();
+        month(selectedMonth);
+        day(selectedDay);
     }
 
     return (
@@ -24,9 +28,11 @@ export const Modal = ({modalOpen, typedDate, headerText, dateText}) => {
             <div className={style.modalStyling}>
                 <h3>{headerText}</h3>
                 <p>{dateText}</p>
-                <label htmlFor="datePicker">Enter date:</label>
-                <input onChange={(e) => handleDateTyped(e)} type="text" name="datePicker" />
-                <button onClick={() => handleSendDate()}>Get Date</button>
+                <label htmlFor="datePicker">Enter Month:</label>
+                <input onChange={(e) => handleMonth(e)} type="text" name="datePicker" />
+                <label htmlFor="dayPicker">Enter Day:</label>
+                <input onChange={(e) => handleDay(e)} type="text" name="dayPicker" />
+                <button onClick={() => handleSendDate()}>Send Date</button>
             </div>
         </>
     )
