@@ -1,0 +1,41 @@
+@use "../../styles/mixins" as m;
+@use "../../styles/variables" as *;
+
+.overlayStyling {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background: #1c1c1c72;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9;
+}
+
+.modalStyling {
+    @include m.flexBox(column, center, center);
+    width: 80vw;
+    height: 20vh;
+    border: 5px solid $dark-brown;
+    background: $dark-color;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+    color: $white-color;
+    text-align: center;
+    padding: 1.7rem 0rem;
+
+    h3, p {
+        margin: 0;
+    }
+
+    input {
+        border-radius: 5px;
+        border: 0;
+        text-align: center;
+        padding: 0.3rem 0.5rem;
+    }
+}

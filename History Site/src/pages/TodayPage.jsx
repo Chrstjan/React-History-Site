@@ -14,7 +14,7 @@ export const TodayPage = () => {
     useEffect(() => {
         {data ? console.log(data.data.Events): null}
     }, [data])
-
+    
     return (
         <>
             <Header>
