@@ -15,6 +15,7 @@ export const Modal = ({modalOpen, typedDate, headerText, dateText}) => {
 
     const handleSendDate = () => {
         typedDate(selectedDate);
+        handleModal();
     }
 
     return (

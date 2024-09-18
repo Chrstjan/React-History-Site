@@ -10,13 +10,20 @@ import { Modal } from "../components/Modal/Modal"
 
 export const ByDatePage = () => {
     const [modalOpen, setModalOpen] = useState(false);
-    const [selectedDate, setSelectedDate] = useState();
+    const [selectedDate, setSelectedDate] = useState("");
 
     const handleModal = () => {
         setModalOpen(prev => !prev);
     }
 
     useEffect(() => {
+        const getByDateDate = async () => {
+            const res = await fetch(`https://history.muffinlabs.com/date/${selectedDate}`)
+            const data = await res.json();
+            setSelectedDate(data);
+        }
+
+        getByDateDate();
         console.log(selectedDate);
     }, [selectedDate])
 
