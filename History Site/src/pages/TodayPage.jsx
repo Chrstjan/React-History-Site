@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { useFetch } from "../hooks/useFetch"
 import { Header } from "../components/Header/Header"
 import { HeaderBoard } from "../components/Header/HeaderBoard/HeaderBoard"
@@ -7,8 +7,10 @@ import { DateWrapper } from "../components/Main/DateWrapper/DateWrapper"
 import { Icon } from "../components/Main/Icon/Icon"
 import { Timeline } from "../components/Main/Timeline/Timeline"
 import { TimelineEvent } from "../components/Main/Timeline/Event/TimelineEvent"
+import { ThemeContext } from "../context/ThemeContext"
 
 export const TodayPage = () => {
+    const {isDarkMode} = useContext(ThemeContext);
     let today = new Date();
     let month = String(today.getMonth() + 1).padStart(2,'0');
     let day = String(today.getDate()).padStart(2,'0');
@@ -23,14 +25,14 @@ export const TodayPage = () => {
     return (
         <>
             <Header>
-                <HeaderBoard headerText="On This Day" subText="What happened on this day - historical events, deaths and births thoughout time"/>
+                <HeaderBoard headerText="On This Day" isDarkMode={isDarkMode} subText="What happened on this day - historical events, deaths and births thoughout time"/>
             </Header>
-            <Navigation />
+            <Navigation isDarkMode={isDarkMode}/>
             <DateWrapper>
-                <Icon icon="./src/assets/images/Light.svg" type="lightbulb"/>
+                <Icon icon="./src/assets/images/Light.svg" type="lightbulb" isDarkMode={isDarkMode}/>
                 {data ? 
                  <Timeline points={data.events}>
-                    <TimelineEvent data={data.events}/>
+                    <TimelineEvent data={data.events} isDarkMode={isDarkMode}/>
                  </Timeline> 
                  : <h2>Loading...</h2>}
             </DateWrapper>

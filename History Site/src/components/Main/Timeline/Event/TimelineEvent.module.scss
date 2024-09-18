@@ -4,11 +4,26 @@
 
 .eventStyling {
     @include m.flexBox(column, center, center, 4rem);
-   margin-top: 10.5rem;
+    margin-top: 10.5rem;
+
 
    .event {
     color: $white-color;
     margin-right: 2.8rem;
+
+    &.lightMode {
+        color: $dark-color;
+
+        footer {
+            img {
+                filter: none;
+            }
+            
+            a {
+                color: $dark-color;
+            }
+        }
+    }
 
     header {
         h4 {

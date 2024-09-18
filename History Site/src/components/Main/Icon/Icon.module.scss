@@ -11,6 +11,10 @@
     &.lightbulb {
         margin-left: -68%;
         padding-bottom: 1rem;
+
+        &.lightMode {
+            filter: invert(100%);
+        }
     }
 
     &.small {

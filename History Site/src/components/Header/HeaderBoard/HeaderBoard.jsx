@@ -1,8 +1,8 @@
 import style from "./HeaderBoard.module.scss";
 
-export const HeaderBoard = ({headerText, action, date, subText}) => {
+export const HeaderBoard = ({headerText, action, date, subText, isDarkMode}) => {
     return (
-            <div className={style.boardStyling}>
+            <div className={`${style.boardStyling} ${isDarkMode ? style.darkMode : style.lightMode}`}>
                 <header>
                     <span className={style.selectStyling}>
                         <h2>{headerText}</h2>

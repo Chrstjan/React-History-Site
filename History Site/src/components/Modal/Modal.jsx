@@ -20,6 +20,7 @@ export const Modal = ({modalOpen, month, day, headerText, dateText}) => {
     const handleSendDate = () => {
         month(selectedMonth);
         day(selectedDay);
+        handleModal();
     }
 
     return (

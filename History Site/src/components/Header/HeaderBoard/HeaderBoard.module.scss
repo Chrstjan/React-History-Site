@@ -13,6 +13,28 @@
     left: 50%;
     transform: translate(-50%);
 
+    &.darkMode {
+        @extend .boardStyling;
+    }
+
+    &.lightMode {
+        background: $white-color;
+        border: 12px solid #1f1f1f77;
+
+        header {
+
+           .selectStyling {
+            button {
+               color: $tan-brown;
+            }
+           }
+
+            h2, p {
+                color: $dark-brown;
+            }
+        }
+    }
+
     header {
 
         .selectStyling {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useQuery } from "@tanstack/react-query"
 import { Header } from "../components/Header/Header"
 import { HeaderBoard } from "../components/Header/HeaderBoard/HeaderBoard"
@@ -8,8 +8,10 @@ import { Navigation } from "../components/Navigation/Navigation"
 import { Timeline } from "../components/Main/Timeline/Timeline"
 import { TimelineEvent } from "../components/Main/Timeline/Event/TimelineEvent"
 import { Modal } from "../components/Modal/Modal"
+import { ThemeContext } from "../context/ThemeContext"
 
 export const ByDatePage = () => {
+    const {isDarkMode} = useContext(ThemeContext);
     const [modalOpen, setModalOpen] = useState(false);
 
     const [month, setMonth] = useState("");
@@ -44,15 +46,17 @@ export const ByDatePage = () => {
     return (
         <>
             <Header>
-                <HeaderBoard headerText="On" action={handleModal} date="22/08" subText="What happened on this day - Here you can enter a specific date to get only events that happened on this date"/>
+                <HeaderBoard headerText="On" isDarkMode={isDarkMode} action={handleModal} date={month !== "" ? `${day}/${month}` : "22/08" } subText="What happened on this day - Here you can enter a specific date to get only events that happened on this date"/>
             </Header>
-            <Navigation />
+            <Navigation isDarkMode={isDarkMode}/>
             {modalOpen ? <Modal modalOpen={setModalOpen} month={setMonth} day={setDay} headerText="Get Event by date" dateText="Must follow month/day format (02/14)"/> : null}
             <DateWrapper>
-                <Icon icon="./src/assets/images/Light.svg"/>
-                {/* <Timeline>
-                    <TimelineEvent />
-                </Timeline> */}
+                <Icon icon="./src/assets/images/Light.svg" type="lightbulb" isDarkMode={isDarkMode}/>
+                {data.type !== "server_error#empty_response" ? 
+                    <Timeline points={data.events}>
+                        <TimelineEvent data={data.events} isDarkMode={isDarkMode}/>
+                    </Timeline> 
+                : null}
             </DateWrapper>
         </>
     )

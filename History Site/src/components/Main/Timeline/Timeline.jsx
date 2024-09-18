@@ -17,7 +17,7 @@ export const Timeline = ({children, points}) => {
                                   </div>
                                 </>
                             )
-                        })};
+                        })}
                     </div>
                 </div>
                 {children}
