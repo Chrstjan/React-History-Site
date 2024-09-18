@@ -9,6 +9,7 @@ import { Timeline } from "../components/Main/Timeline/Timeline"
 import { TimelineEvent } from "../components/Main/Timeline/Event/TimelineEvent"
 import { Modal } from "../components/Modal/Modal"
 import { ThemeContext } from "../context/ThemeContext"
+import { BackToTop } from "../components/BackToTop/BackToTop"
 
 export const ByDatePage = () => {
     const {isDarkMode} = useContext(ThemeContext);
@@ -49,6 +50,7 @@ export const ByDatePage = () => {
                 <HeaderBoard headerText="On" isDarkMode={isDarkMode} action={handleModal} date={month !== "" ? `${day}/${month}` : "22/08" } subText="What happened on this day - Here you can enter a specific date to get only events that happened on this date"/>
             </Header>
             <Navigation isDarkMode={isDarkMode}/>
+            <BackToTop />
             {modalOpen ? <Modal modalOpen={setModalOpen} month={setMonth} day={setDay} headerText="Get Event by date" dateText="Must follow month/day format (02/14)"/> : null}
             <DateWrapper>
                 <Icon icon="./src/assets/images/Light.svg" type="lightbulb" isDarkMode={isDarkMode}/>
