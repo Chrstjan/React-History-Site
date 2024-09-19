@@ -12,25 +12,76 @@
 
     .eventContainer {
         @include m.flexBox(row, center, center, 1rem);
+
+        @media (min-width: 1440px) {
+            &:nth-of-type(even) .eventPoint {
+                flex-direction: row-reverse;
+                right: 39.8%;
+            }
+
+            &:nth-of-type(even) .event {
+                position: absolute;
+                right: 22%;
+
+                header {
+                    h4 {
+                        margin: 0;
+                        padding-right: 4rem;
+                    }
+                }
+            }
+        }
+
+        &.lightMode {
+
+            .eventPoint {
+
+                .lineStyling {
+                    border-bottom: 4px solid $tan-brown;
+                }
+
+                .pointStyling {
+                    background: $white-color;
+                    border: 4px solid $tan-brown;
+                }
+            }
+        }
+
+        .eventPoint {
+            @include m.flexBox(row, center, center, 0rem);
+            position: absolute;
+            right: 16%; //46.9
+            z-index: 55;
+            margin-bottom: 1rem;
+        
+            @media (min-width: 1440px) {
+
+                right: 46.75%;
+            }
+            
+            .lineStyling {
+                display: block;
+                height: 20px;
+                width: 100px;
+                border-bottom: 4px solid $light-brown;
+                margin-bottom: 1.5rem;
+            }
+        
+            .pointStyling {
+                display: block;
+                width: 31px;
+                height: 31px;
+                border-radius: 50%;
+                background: $dark-color;
+                border: 4px solid $light-brown;
+            }
+        }
+        
     }
 
    .event {
     color: $white-color;
     margin-right: 2.8rem;
-
-    @media (min-width: 1440px) {
-        &:nth-child(even) {
-            margin-right: -50rem;
-
-            header {
-                margin-right: 2rem;
-                h4 {
-                    text-align: center;
-                    margin: 0;
-                }
-            }
-        }
-    }
 
     &.lightMode {
         color: $dark-color;
@@ -74,4 +125,5 @@
         }
     }
    }
+
 }

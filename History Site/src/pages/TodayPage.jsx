@@ -40,7 +40,7 @@ export const TodayPage = () => {
             <DateWrapper>
                 <Icon icon="./src/assets/images/Light.svg" type="lightbulb" isDarkMode={isDarkMode}/>
                 {data ? 
-                 <Timeline points={data.events}>
+                 <Timeline isDarkMode={isDarkMode}>
                     <TimelineEvent data={data.events} isDarkMode={isDarkMode}/>
                  </Timeline> 
                  : <h2>Loading...</h2>}

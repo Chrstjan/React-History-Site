@@ -4,7 +4,7 @@
 .eventPoint {
     @include m.flexBox(row, center, center, 0rem);
     position: absolute;
-    right: 16%; //46.9
+    right: 16%;
     z-index: 55;
     margin-bottom: 1rem;
 
@@ -28,4 +28,4 @@
         background: $dark-color;
         border: 5px solid $light-brown;
     }
-   }
+}

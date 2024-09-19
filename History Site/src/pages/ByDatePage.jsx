@@ -53,7 +53,7 @@ export const ByDatePage = () => {
             <DateWrapper>
                 <Icon icon="./src/assets/images/Light.svg" type="lightbulb" isDarkMode={isDarkMode}/>
                 {data.type !== "server_error#empty_response" ? 
-                    <Timeline points={data.events}>
+                    <Timeline isDarkMode={isDarkMode}>
                         <TimelineEvent data={data.events} isDarkMode={isDarkMode}/>
                     </Timeline> 
                 : null}
