@@ -1,4 +1,5 @@
 import { Icon } from "../../Icon/Icon";
+import { EventPoint } from "../EventPoint/EventPoint";
 import style from "./TimelineEvent.module.scss";
 
 export const TimelineEvent = ({data, isDarkMode}) => {
@@ -6,7 +7,9 @@ export const TimelineEvent = ({data, isDarkMode}) => {
             <div className={`${style.eventStyling}`}>
                 {data.map((item) => {
                     return (
-                            <div className={`${style.event} ${isDarkMode ? null : style.lightMode}`}>
+                        <>
+                            <section className={style.eventContainer}>
+                             <div className={`${style.event} ${isDarkMode ? null : style.lightMode}`}>
                                 <header>
                                     <h4>Year: {item.year}</h4>
                                 </header>
@@ -15,7 +18,10 @@ export const TimelineEvent = ({data, isDarkMode}) => {
                                     <Icon icon="./src/assets/images/Bookmark.svg"/>
                                     <a href={item.pages[0].content_urls.mobile.page} target="_blank">Read More</a>
                                 </footer>
-                            </div>
+                             </div>
+                             <EventPoint />
+                            </section>
+                        </>
                     )
                 })}
             </div>

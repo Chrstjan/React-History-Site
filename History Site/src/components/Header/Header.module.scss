@@ -1,13 +1,15 @@
 .headerStyling {
     display: block;
     background-image: url("../../assets/images/headerImage.jpg");
-    background-position: center;
+    background-position: center 70%;
     background-repeat: no-repeat;
     background-size: cover;
     width: 99vw;
-    height: 60vh;
+    height: 53vh;
 
     @media (min-width: 1440px) {
         width: 98.9vw;
+        height: 400px;
+        background-position: center 80%;
     }
 }

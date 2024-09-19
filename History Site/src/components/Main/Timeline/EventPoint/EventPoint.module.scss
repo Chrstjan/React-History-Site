@@ -1,0 +1,31 @@
+@use "../../../../styles/mixins" as m;
+@use "../../../../styles/variables" as *;
+
+.eventPoint {
+    @include m.flexBox(row, center, center, 0rem);
+    position: absolute;
+    right: 16%; //46.9
+    z-index: 55;
+    margin-bottom: 1rem;
+
+    @media (min-width: 1440px) {
+        right: 46.75%;
+    }
+    
+    .lineStyling {
+        display: block;
+        height: 20px;
+        width: 100px;
+        border-bottom: 5px solid $light-brown;
+        margin-bottom: 1.5rem;
+    }
+
+    .pointStyling {
+        display: block;
+        width: 31px;
+        height: 31px;
+        border-radius: 50%;
+        background: $dark-color;
+        border: 5px solid $light-brown;
+    }
+   }

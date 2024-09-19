@@ -14,9 +14,9 @@
     transform: translate(-50%);
 
     @media (min-width: 1440px) {
-        width: 36vw;
-        top: 57%;
-        padding-bottom: 1.5rem;
+        width: 57vw;
+        height: 250px;
+        top: 38%;
     }
 
     &.darkMode {
@@ -38,6 +38,46 @@
             h2, p {
                 color: $dark-brown;
             }
+        }
+    }
+
+    .dotsContainer {
+        @include m.flexBox(row, space-between, center);
+
+        &.lightMode {
+            .dotStyling {
+                background: $tan-brown;
+            }
+        }
+
+        .leftStyling {
+            @include m.flexBox(column, space-between, center, 9.5rem);
+            position: absolute;
+            top: 2%;
+            left: 2%;
+
+            @media (min-width: 1440px) {
+                gap: 12rem;
+            }
+        }
+
+        .rightStyling {
+            @include m.flexBox(column, space-between, center, 9.5rem);
+            position: absolute;
+            top: 2%;
+            right: 2%;
+
+            @media (min-width: 1440px) {
+                gap: 12rem;
+            }
+        }
+
+        .dotStyling {
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: $light-brown;
         }
     }
 
@@ -86,7 +126,7 @@
 
             @media (min-width: 1440px) {
                 width: 350px;
-                margin-left: 8rem;
+                margin-left: 14rem;
                 font-size: 20px;
             }
         }
