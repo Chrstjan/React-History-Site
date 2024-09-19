@@ -1,5 +1,6 @@
 @use "../../styles/mixins" as m;
 @use "../../styles/variables" as *;
+@use "../../styles/placeholders";
 
 .overlayStyling {
     display: block;
@@ -26,10 +27,28 @@
     z-index: 99;
     color: $white-color;
     text-align: center;
-    padding: 1.7rem 0rem;
+    padding: 6rem 0rem;
+
+    @media (min-width: 1440px) {
+        width: 40vw;
+    }
+
+    h3 {
+        @extend %headerfont;
+    }
 
     h3, p {
         margin: 0;
+    }
+
+    p {
+        @extend %breadtextfont;
+        font-size: 18px;
+    }
+
+    label {
+        @extend %breadtextfont;
+        font-size: 20px;
     }
 
     input {
@@ -37,5 +56,19 @@
         border: 0;
         text-align: center;
         padding: 0.3rem 0.5rem;
+    }
+
+    button {
+        border: 0;
+        background: $tan-brown;
+        padding: 0.7rem 1.7rem;
+        @extend %breadtextfont;
+        font-size: 16px;
+        border-radius: 9px;
+
+        &:hover {
+            scale: 1.1;
+            cursor: pointer;
+        }
     }
 }

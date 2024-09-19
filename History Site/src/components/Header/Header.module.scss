@@ -4,6 +4,10 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100vw;
+    width: 99vw;
     height: 60vh;
+
+    @media (min-width: 1440px) {
+        width: 98.9vw;
+    }
 }

@@ -3,26 +3,53 @@
 @use "../../styles/placeholders";
 
 .navStyling {
-    border-bottom: 6px solid $dark-color;
+    border-bottom: 12px solid #292323;
+
+    @media (min-width: 1440px) {
+        padding: 2.5rem 0rem;
+    }
 
     &.lightMode {
         border-bottom: 6px solid $dark-brown;
-        
     }
 
     .NavigationStyling {
         @include m.flexBox(column-reverse, center, center);
         padding: 0;
+
+        @media (min-width: 1440px) {
+            flex-direction: row;
+            gap: 1rem;
+            justify-content: space-evenly;
+        }
+
+        &.lightMode {
+            a {
+                color: $dark-brown;
+            }
+        }
     
         li {
             list-style: none;
+
+            a {
+                font-size: 22px;
+                @extend %breadtextfont;
+                text-decoration: none;
+                text-transform: uppercase;
+                @media (min-width: 1440px) {
+                    font-size: 28px;
+                }
+            }
         }
-    
-        a {
-            text-decoration: none;
-            font-size: 22px;
-            @extend %breadtextfont;
-            text-transform: uppercase;
+
+        .activeLink {
+            color: $light-brown;
+            text-decoration: underline;
+        }
+
+        .navLink {
+            color: $gray-brown;
         }
     }
 }

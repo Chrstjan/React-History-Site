@@ -6,11 +6,29 @@
     img {
         width: 6%;
         filter: invert(100%);
+
+        &:hover {
+            cursor: pointer;
+            scale: 1.1;
+        }
     }
 
     &.lightbulb {
         margin-left: -68%;
         padding-bottom: 1rem;
+
+        @media (min-width: 1440px) {
+            margin: 0;
+        }
+
+        img {
+            @media (min-width: 1440px) {
+                width: 3%;
+                position: relative;
+                top: 20%;
+                left: 40%;
+            }
+        }
 
         &.lightMode {
             filter: invert(100%);

@@ -3,23 +3,45 @@
 @use "../../../styles/placeholders";
 
 .aboutStyling {
-    @include m.flexBox(column, center, center);
+    @include m.flexBox(column, center, center, 1.5rem);
     color: $white-color;
     padding: 0rem 1.8rem;
     text-align: center;
+
+    @media (min-width: 1440px) {
+        padding: 0rem 3rem 2rem 3rem;
+    }
+
+    &.lightMode {
+        color: $dark-color;
+
+        header {
+            h3 {
+                color: $tan-brown;
+            }
+        }
+    }
 
     header {
         h3 {
             @extend %headerfont;
             color: $light-brown;
+            margin: 0;
+
+            @media (min-width: 1440px) {
+                font-size: 40px;
+                margin-bottom: 1rem;
+            }
         }
     }
 
     p {
         @extend %breadtextfont;
-    }
+        margin: 0;
 
-    &.lightMode {
-        color: $dark-color;
+        @media (min-width: 1440px) {
+            font-size: 20px;
+            width: 600px;
+        }
     }
 }

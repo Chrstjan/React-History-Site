@@ -13,6 +13,12 @@
     left: 50%;
     transform: translate(-50%);
 
+    @media (min-width: 1440px) {
+        width: 36vw;
+        top: 57%;
+        padding-bottom: 1.5rem;
+    }
+
     &.darkMode {
         @extend .boardStyling;
     }
@@ -24,7 +30,7 @@
         header {
 
            .selectStyling {
-            button {
+            .buttonStyling {
                color: $tan-brown;
             }
            }
@@ -40,7 +46,7 @@
         .selectStyling {
             @include m.flexBox(row, center, center, 0.5rem);
             
-            button {
+            .buttonStyling {
                 color: $gray-brown;
                 background: transparent;
                 border: 0;
@@ -48,6 +54,15 @@
                 font-size: 30px;
                 text-decoration: underline;
                 color: $light-brown;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                @media (min-width: 1440px) {
+                    font-size: 40px;
+                    margin-top: 2.7rem;
+                }
             }
         }
         h2 {
@@ -55,6 +70,11 @@
             @extend %headerfont;
             font-size: 35px;
             text-align: center;
+
+            @media (min-width: 1440px) {
+                font-size: 50px;
+                margin-bottom: 0;
+            }
         }
 
         p {
@@ -63,6 +83,12 @@
             text-align: center;
             width: 270px;
             padding-left: 0.5rem;
+
+            @media (min-width: 1440px) {
+                width: 350px;
+                margin-left: 8rem;
+                font-size: 20px;
+            }
         }
     }
 
