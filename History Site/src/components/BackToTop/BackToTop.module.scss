@@ -1,20 +1,18 @@
 @use "../../styles/variables" as *;
 
 .topStyling {
+    width: 15%;
     position: fixed;
     bottom: 10%;
     right: 5%;
-    z-index: 22;
-    border: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%; 
-    text-align: center;
-    background: $white-color;
-    color: $dark-color;
+    z-index: 999;
+    filter: invert(100%);
+
+    @media (min-width: 1440px) {
+        width: 5%;
+    }
 
     &.lightMode {
-        background: $dark-color;
-        color: $white-color;
+        filter: invert(0%);
     }
 }

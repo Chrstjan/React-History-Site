@@ -21,6 +21,7 @@ export const BackToTop = ({isDarkMode}) => {
 
         const scrollProgress = (scrollY / totalScrollable) * 100;
 
+        //30%
         if (scrollProgress > 30) {
             setIsVisible(true);
         }
@@ -38,7 +39,7 @@ export const BackToTop = ({isDarkMode}) => {
     }, []);
     return (
         <>
-        {isVisible ? <button className={`${style.topStyling} ${isDarkMode ? null : style.lightMode}`} onClick={() => scrollTopTop()} ref={myRef}>Back to top</button> : null}
+        {isVisible ? <img src="./src/assets/images/Upward Arrow.svg" className={`${style.topStyling} ${isDarkMode ? null : style.lightMode}`} onClick={scrollTopTop} alt="back to top arrow" ref={myRef}/> : null}
         </>
     )
 }
