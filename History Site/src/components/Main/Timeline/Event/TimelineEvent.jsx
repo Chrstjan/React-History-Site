@@ -6,7 +6,6 @@ export const TimelineEvent = ({data, isDarkMode}) => {
             <div className={`${style.eventStyling}`}>
                 {data.map((item) => {
                     return (
-                        <>
                             <div className={`${style.event} ${isDarkMode ? null : style.lightMode}`}>
                                 <header>
                                     <h4>Year: {item.year}</h4>
@@ -17,7 +16,6 @@ export const TimelineEvent = ({data, isDarkMode}) => {
                                     <a href={item.pages[0].content_urls.mobile.page} target="_blank">Read More</a>
                                 </footer>
                             </div>
-                        </>
                     )
                 })}
             </div>

@@ -6,10 +6,27 @@
     @include m.flexBox(column, center, center, 4rem);
     margin-top: 10.5rem;
 
+    @media (min-width: 1440px) {
+        margin-top: 13.5rem;
+    }
 
    .event {
     color: $white-color;
     margin-right: 2.8rem;
+
+    @media (min-width: 1440px) {
+        &:nth-child(even) {
+            margin-right: -50rem;
+
+            header {
+                margin-right: 2rem;
+                h4 {
+                    text-align: center;
+                    margin: 0;
+                }
+            }
+        }
+    }
 
     &.lightMode {
         color: $dark-color;
