@@ -7,8 +7,7 @@ export const TimelineEvent = ({data, isDarkMode}) => {
             <div className={`${style.eventStyling}`}>
                 {data.map((item, index) => {
                     return (
-                        <>
-                            <section className={`${style.eventContainer} ${isDarkMode ? null : style.lightMode}`}>
+                            <section key={index} className={`${style.eventContainer} ${isDarkMode ? null : style.lightMode}`}>
                              <div className={`${style.event} ${isDarkMode ? null : style.lightMode}`}>
                                 <header>
                                     <h4>Year: {item.year}</h4>
@@ -28,7 +27,6 @@ export const TimelineEvent = ({data, isDarkMode}) => {
                                 </div>
                              </div>
                             </section>
-                        </>
                     )
                 })}
             </div>

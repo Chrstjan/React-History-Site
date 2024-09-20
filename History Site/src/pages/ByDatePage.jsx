@@ -48,10 +48,13 @@ export const ByDatePage = () => {
 
     //Lavet et tomt array til at komme de sorteret objects ind i
     let sortedEvents = [];
-    if (data) {
+    if (data.events) {
         //Laver en kopi af data.events og modificere kopien med en .sort til at tage de laveste tal først
         //Og sætter det tomme array til at være den nye modificeret kopi
         sortedEvents = [...data.events].sort((a, b) => a.year - b.year);
+    }
+    else {
+        return (<h2>Loading...</h2>);
     }
 
     //Funktion til at tilføje flere events når burger scroller ned til bunden
@@ -61,26 +64,26 @@ export const ByDatePage = () => {
         setVisibleEvents(prev => prev + 10);
     }
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollPosition = window.scrollY;
-            const windowHeight = window.innerHeight;
-            const documentHeight = document.documentElement.scrollHeight;
+    // useEffect(() => {
+    //     const handleScroll = () => {
+    //         const scrollPosition = window.scrollY;
+    //         const windowHeight = window.innerHeight;
+    //         const documentHeight = document.documentElement.scrollHeight;
 
-            //Checker om brugeren er i bunden af siden. Når brugeren er i bunden køre loadMoreEvents funktionen
-            if (windowHeight + scrollPosition >= documentHeight) {
-                // console.log("Bottom Pit!");
-                loadMoreEvents();
-            }
+    //         //Checker om brugeren er i bunden af siden. Når brugeren er i bunden køre loadMoreEvents funktionen
+    //         if (windowHeight + scrollPosition >= documentHeight) {
+    //             // console.log("Bottom Pit!");
+    //             loadMoreEvents();
+    //         }
 
-        }
+    //     }
 
-        window.addEventListener("scroll", handleScroll);
+    //     window.addEventListener("scroll", handleScroll);
 
-        return () => { 
-            window.removeEventListener("scroll", handleScroll);
-        }
-    }, [])
+    //     return () => { 
+    //         window.removeEventListener("scroll", handleScroll);
+    //     }
+    // }, [])
     
     return (
         <>
@@ -93,7 +96,7 @@ export const ByDatePage = () => {
                 <Icon icon="./src/assets/images/Light.svg" type="lightbulb" isDarkMode={isDarkMode}/>
                 {data.type !== "server_error#empty_response" ? 
                     <Timeline isDarkMode={isDarkMode}>
-                        <TimelineEvent data={sortedEvents.slice(0, visibleEvents)} isDarkMode={isDarkMode}/>
+                        <TimelineEvent data={sortedEvents} isDarkMode={isDarkMode}/>
                     </Timeline> 
                 : null}
             </DateWrapper>
