@@ -11,6 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export const TodayPage = () => {
     const { isDarkMode } = useContext(ThemeContext);
+    //Bruges til lazy loading
     const [visibleEvents, setVisibleEvents] = useState(10);
 
     let today = new Date();
@@ -68,7 +69,7 @@ export const TodayPage = () => {
             <DateWrapper>
                 <Icon icon="./src/assets/images/Light.svg" type="lightbulb" isDarkMode={isDarkMode} />
                 <Timeline isDarkMode={isDarkMode}>
-                    {/*  */}
+                    {/*Slicer arrayet så den kun viser objects for det antal der er i visibleEvents til lazy loading  */}
                     <TimelineEvent data={sortedEvents.slice(0, visibleEvents)} isDarkMode={isDarkMode} />
                 </Timeline>
             </DateWrapper>
