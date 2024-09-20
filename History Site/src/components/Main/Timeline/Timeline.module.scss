@@ -4,6 +4,7 @@
 .timelineStyling {
     @include m.flexBox(row-reverse, flex-start, flex-start);
     height: 100%;
+    overflow-y: hidden;
 
     @media (min-width: 1440px) {
         justify-content: center;
@@ -39,9 +40,9 @@
         .lineStyling {
             display: block;
             border-left: 6px solid $light-brown;
-            height: 100vh;
+            height: 30vh;
             width: 20px;
-            margin-right: 3.65rem;
+            margin-right: 3.55rem;
         }
     }
     

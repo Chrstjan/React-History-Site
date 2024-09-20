@@ -5,7 +5,7 @@ import style from "./TimelineEvent.module.scss";
 export const TimelineEvent = ({data, isDarkMode}) => {
     return (
             <div className={`${style.eventStyling}`}>
-                {data.map((item) => {
+                {data.map((item, index) => {
                     return (
                         <>
                             <section className={`${style.eventContainer} ${isDarkMode ? null : style.lightMode}`}>
@@ -22,7 +22,10 @@ export const TimelineEvent = ({data, isDarkMode}) => {
                              {/* <EventPoint /> */}
                              <div className={style.eventPoint}>
                                 <span className={style.lineStyling}></span>
-                                <span className={style.pointStyling}></span>
+                                <div className={style.lineContainer}>
+                                    <span className={style.pointStyling}></span>
+                                    <span className={`${style.bottomLine}`}></span>
+                                </div>
                              </div>
                             </section>
                         </>

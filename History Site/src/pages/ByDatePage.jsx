@@ -13,6 +13,8 @@ import { Modal } from "../components/Modal/Modal"
 export const ByDatePage = () => {
     const {isDarkMode} = useContext(ThemeContext);
     const [modalOpen, setModalOpen] = useState(false);
+
+    //Laver en state til at styre hvor mange events der bliver vidst af gangen
     const [visibleEvents, setVisibleEvents] = useState(10);
 
     const [month, setMonth] = useState("08");
@@ -52,8 +54,10 @@ export const ByDatePage = () => {
         sortedEvents = [...data.events].sort((a, b) => a.year - b.year);
     }
 
+    //Funktion til at tilføje flere events når burger scroller ned til bunden
     const loadMoreEvents = () => {
         console.log("Bottom pit!");
+        //Tilføjer 10 mere til VisibleEvents så der kommer 10 events mere frem
         setVisibleEvents(prev => prev + 10);
     }
 
