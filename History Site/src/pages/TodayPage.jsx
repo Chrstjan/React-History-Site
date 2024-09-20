@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Header } from "../components/Header/Header"
 import { HeaderBoard } from "../components/Header/HeaderBoard/HeaderBoard"
 import { Navigation } from "../components/Navigation/Navigation"
@@ -11,6 +11,8 @@ import { useQuery } from "@tanstack/react-query"
 
 export const TodayPage = () => {
     const {isDarkMode} = useContext(ThemeContext);
+    const [visibleEvents, setVisibleEvents] = useState(10);
+
     let today = new Date();
     let month = String(today.getMonth() + 1).padStart(2,'0');
     let day = String(today.getDate()).padStart(2,'0');
@@ -24,12 +26,40 @@ export const TodayPage = () => {
         },
         staleTime: 1000 * 600
     });
-                               //https://history.muffinlabs.com/date
+
+    //Lavet et tomt array til at komme de sorteret objects ind i
+    let sortedEvents = [];
+    if (data) {
+        //Laver en kopi af data.events og modificere kopien med en .sort til at tage de laveste tal først
+        //Og sætter det tomme array til at være den nye modificeret kopi
+        sortedEvents = [...data.events].sort((a, b) => a.year - b.year);
+    }
+
+    const loadMoreEvents = () => {
+        console.log("Bottom pit!");
+        setVisibleEvents(prev => prev + 10);
+    }
 
     useEffect(() => {
-        //data.data.Events
-        {data ? console.log(data): null}
-    }, [data])
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+
+            //Checker om brugeren er i bunden af siden. Når brugeren er i bunden køre loadMoreEvents funktionen
+            if (windowHeight + scrollPosition >= documentHeight) {
+                // console.log("Bottom Pit!");
+                loadMoreEvents();
+            }
+
+        }
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => { 
+            window.removeEventListener("scroll", handleScroll);
+        }
+    }, [])
     
     return (
         <>
@@ -41,7 +71,7 @@ export const TodayPage = () => {
                 <Icon icon="./src/assets/images/Light.svg" type="lightbulb" isDarkMode={isDarkMode}/>
                 {data ? 
                  <Timeline isDarkMode={isDarkMode}>
-                    <TimelineEvent data={data.events} isDarkMode={isDarkMode}/>
+                    <TimelineEvent data={sortedEvents.slice(0, visibleEvents)} isDarkMode={isDarkMode}/>
                  </Timeline> 
                  : <h2>Loading...</h2>}
             </DateWrapper>

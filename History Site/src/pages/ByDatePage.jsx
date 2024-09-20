@@ -13,6 +13,7 @@ import { Modal } from "../components/Modal/Modal"
 export const ByDatePage = () => {
     const {isDarkMode} = useContext(ThemeContext);
     const [modalOpen, setModalOpen] = useState(false);
+    const [visibleEvents, setVisibleEvents] = useState(10);
 
     const [month, setMonth] = useState("08");
     const [day, setDay] = useState("28");
@@ -42,6 +43,40 @@ export const ByDatePage = () => {
     if (isPending) {
         return <h2>Loading...</h2>;
     }
+
+    //Lavet et tomt array til at komme de sorteret objects ind i
+    let sortedEvents = [];
+    if (data) {
+        //Laver en kopi af data.events og modificere kopien med en .sort til at tage de laveste tal først
+        //Og sætter det tomme array til at være den nye modificeret kopi
+        sortedEvents = [...data.events].sort((a, b) => a.year - b.year);
+    }
+
+    const loadMoreEvents = () => {
+        console.log("Bottom pit!");
+        setVisibleEvents(prev => prev + 10);
+    }
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+
+            //Checker om brugeren er i bunden af siden. Når brugeren er i bunden køre loadMoreEvents funktionen
+            if (windowHeight + scrollPosition >= documentHeight) {
+                // console.log("Bottom Pit!");
+                loadMoreEvents();
+            }
+
+        }
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => { 
+            window.removeEventListener("scroll", handleScroll);
+        }
+    }, [])
     
     return (
         <>
@@ -54,7 +89,7 @@ export const ByDatePage = () => {
                 <Icon icon="./src/assets/images/Light.svg" type="lightbulb" isDarkMode={isDarkMode}/>
                 {data.type !== "server_error#empty_response" ? 
                     <Timeline isDarkMode={isDarkMode}>
-                        <TimelineEvent data={data.events} isDarkMode={isDarkMode}/>
+                        <TimelineEvent data={sortedEvents.slice(0, visibleEvents)} isDarkMode={isDarkMode}/>
                     </Timeline> 
                 : null}
             </DateWrapper>
